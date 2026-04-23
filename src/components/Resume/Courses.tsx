@@ -12,8 +12,8 @@ function getRows(courses: CourseType[]) {
       let ret = 0;
       if (a.university > b.university) ret = -1;
       else if (a.university < b.university) ret = 1;
-      else if (a.number > b.number) ret = 1;
-      else if (a.number < b.number) ret = -1;
+      else if ((a.number ?? 0) > (b.number ?? 0)) ret = 1;
+      else if ((a.number ?? 0) < (b.number ?? 0)) ret = -1;
       return ret;
     })
     .map((course) => <Course data={course} key={course.title} />);
