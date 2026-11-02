@@ -11,7 +11,9 @@ describe('about data', () => {
   it('contains the intro section with GPA and rank', () => {
     expect(aboutMarkdown).toContain('# Intro');
     expect(aboutMarkdown).toContain('刘旭峰');
-    expect(aboutMarkdown).toContain('GPA: 4.04 / 5.0 (均分 90.40) | 排名: 2/34');
+    expect(aboutMarkdown).toContain(
+      'GPA: 4.04 / 5.0 (均分 90.40) | 排名: 2/34',
+    );
   });
 
   it('contains the history section', () => {

@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
@@ -16,7 +16,11 @@ function getAllDataFiles(dir: string): string[] {
       if (!file.includes('__tests__') && !file.includes('node_modules')) {
         results = results.concat(getAllDataFiles(fullPath));
       }
-    } else if (file.endsWith('.ts') || file.endsWith('.tsx') || file.endsWith('.md')) {
+    } else if (
+      file.endsWith('.ts') ||
+      file.endsWith('.tsx') ||
+      file.endsWith('.md')
+    ) {
       results.push(fullPath);
     }
   }
@@ -28,7 +32,8 @@ describe('Cybersecurity & Personal Privacy Protection Audit', () => {
   const files = getAllDataFiles(dataDir);
 
   it('contains zero 18-digit Chinese resident ID card numbers across all data files', () => {
-    const idCardRegex = /\b[1-9]\d{5}(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\d{3}[\dXx]\b/;
+    const idCardRegex =
+      /\b[1-9]\d{5}(?:19|20)\d{2}(?:0[1-9]|1[0-2])(?:0[1-9]|[12]\d|3[01])\d{3}[\dXx]\b/;
     for (const file of files) {
       const content = readFileSync(file, 'utf-8');
       expect(content).not.toMatch(idCardRegex);

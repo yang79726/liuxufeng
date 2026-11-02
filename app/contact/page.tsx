@@ -8,7 +8,7 @@ import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
   title: 'Contact',
-  description: "联系刘旭峰 - 兰州大学地理信息科学专业",
+  description: '联系刘旭峰 - 兰州大学地理信息科学专业',
   path: '/contact/',
 });
 

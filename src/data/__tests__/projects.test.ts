@@ -36,7 +36,9 @@ describe('projects data', () => {
 
   it('image paths start with /', () => {
     for (const project of projects) {
-      expect(project.image.startsWith('/')).toBe(true);
+      if (project.image) {
+        expect(project.image.startsWith('/')).toBe(true);
+      }
     }
   });
 

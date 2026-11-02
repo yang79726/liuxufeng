@@ -7,7 +7,7 @@ import { createPageMetadata } from '@/lib/metadata';
 
 export const metadata: Metadata = createPageMetadata({
   title: '项目经历',
-  description: "遥感与GIS · 数据分析 · 开源项目",
+  description: '遥感与GIS · 数据分析 · 开源项目',
   path: '/projects/',
 });
 

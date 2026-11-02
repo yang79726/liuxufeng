@@ -163,13 +163,6 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
     }
   };
 
-  const emailContent = (
-    <>
-      <span className="contact-email-prefix">{displayMessage}</span>
-      <span className="contact-email-domain">@liuxf2023@lzu.edu.cn</span>
-    </>
-  );
-
   return (
     <div
       className="contact-email-container"

@@ -2,7 +2,7 @@ import { describe, expect, it, vi } from 'vitest';
 
 import * as posts from '@/lib/posts';
 import { SITE_URL } from '@/lib/utils';
-import { generateMetadata } from './page';
+import { generateMetadata } from '../page';
 
 describe('writing post metadata', () => {
   it('uses a trailing-slash canonical URL for posts', async () => {
@@ -18,8 +18,6 @@ describe('writing post metadata', () => {
       params: Promise.resolve({ slug: 'sample-post' }),
     });
 
-    expect(metadata.openGraph?.url).toBe(
-      `${SITE_URL}/writing/sample-post/`,
-    );
+    expect(metadata.openGraph?.url).toBe(`${SITE_URL}/writing/sample-post/`);
   });
 });

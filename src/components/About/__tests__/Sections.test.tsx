@@ -82,10 +82,9 @@ Lead paragraph.
     const nav = screen.getByRole('navigation', { name: 'About sections' });
 
     expect(within(nav).getAllByRole('link').length).toBeGreaterThan(0);
-    expect(within(nav).getByRole('link', { name: 'Some History' })).toHaveAttribute(
-      'href',
-      '#some-history',
-    );
+    expect(
+      within(nav).getByRole('link', { name: 'Some History' }),
+    ).toHaveAttribute('href', '#some-history');
   });
 
   it('renders matching hash links and heading ids into static markup', () => {

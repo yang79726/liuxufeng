@@ -9,14 +9,18 @@ import PersonSchema from '../PersonSchema';
 describe('PersonSchema', () => {
   it('renders a script tag with JSON-LD content', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
 
     expect(script).toBeInTheDocument();
   });
 
   it('contains Person schema type', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data['@context']).toBe('https://schema.org');
@@ -25,7 +29,9 @@ describe('PersonSchema', () => {
 
   it('uses correct author name from constants', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.name).toBe(AUTHOR_NAME);
@@ -33,7 +39,9 @@ describe('PersonSchema', () => {
 
   it('uses correct site URL from constants', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.url).toBe(SITE_URL);
@@ -41,7 +49,9 @@ describe('PersonSchema', () => {
 
   it('includes worksFor organization', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.worksFor).toBeDefined();
@@ -51,7 +61,9 @@ describe('PersonSchema', () => {
 
   it('uses current role as job title', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.jobTitle).toBe(work[0].position);
@@ -59,7 +71,9 @@ describe('PersonSchema', () => {
 
   it('includes alumniOf schools', () => {
     const { container } = render(<PersonSchema />);
-    const script = container.querySelector('script[type="application/ld+json"]');
+    const script = container.querySelector(
+      'script[type="application/ld+json"]',
+    );
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.alumniOf).toBeDefined();

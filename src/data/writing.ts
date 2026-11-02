@@ -10,19 +10,22 @@ const data: WritingItem[] = [
     title: '组合数字电路实验：奇偶校验与加法器设计',
     url: 'https://zhuanlan.zhihu.com/p/2029135345501970566',
     date: '2026-04-19',
-    description: '掌握组合逻辑电路设计、偶校验位产生电路、一位全加器 Multisim 仿真。',
+    description:
+      '掌握组合逻辑电路设计、偶校验位产生电路、一位全加器 Multisim 仿真。',
   },
   {
     title: '空间数据的坐标系统管理与投影变换',
     url: 'https://blog.csdn.net/2401_89001225/article/details/160294609',
     date: '2025-10-15',
-    description: 'GIS 空间分析前必须确保数据在空间上匹配。系统梳理坐标系统类型与投影变换方法。',
+    description:
+      'GIS 空间分析前必须确保数据在空间上匹配。系统梳理坐标系统类型与投影变换方法。',
   },
   {
     title: '遥感图像处理课程笔记',
     url: 'https://mud-bay-d1d.notion.site/20d76a85431f80e4b51dcea1c542da30',
     date: '2025-06-19',
-    description: '采样量化、直方图均衡化、几何校正、辐射校正、影像增强与植被指数。',
+    description:
+      '采样量化、直方图均衡化、几何校正、辐射校正、影像增强与植被指数。',
   },
   {
     title: '区域规划课程笔记',
