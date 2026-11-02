@@ -15,8 +15,8 @@ const skills: Skill[] = [
   // ===== 开发语言 =====
   {
     title: 'Python',
-    competency: 4,
-    category: ['开发语言', '数据分析'],
+    competency: 5,
+    category: ['开发语言', '数据与算法'],
   },
   {
     title: 'C',
@@ -26,91 +26,87 @@ const skills: Skill[] = [
   {
     title: 'R',
     competency: 3,
-    category: ['开发语言', '数据分析'],
+    category: ['开发语言', '数据与算法'],
   },
 
   // ===== 遥感与GIS =====
   {
-    title: 'ArcGIS',
+    title: 'ArcGIS / ArcMap',
     competency: 4,
     category: ['遥感与GIS'],
   },
   {
-    title: 'ENVI/IDL',
+    title: 'ENVI / IDL',
     competency: 4,
     category: ['遥感与GIS'],
   },
   {
     title: 'GEE (Google Earth Engine)',
     competency: 4,
-    category: ['遥感与GIS', '云计算'],
+    category: ['遥感与GIS'],
   },
- 
   {
     title: 'AutoCAD',
     competency: 3,
-    category: ['遥感与GIS', '设计工具'],
+    category: ['遥感与GIS'],
+  },
+
+  // ===== 数据与算法 =====
+  {
+    title: 'Pandas & NumPy',
+    competency: 4,
+    category: ['数据与算法'],
+  },
+  {
+    title: 'XGBoost & SHAP',
+    competency: 4,
+    category: ['数据与算法'],
+  },
+  {
+    title: 'Excel 数据建模',
+    competency: 4,
+    category: ['数据与算法'],
   },
 
   // ===== 通信与信号处理 =====
   {
-    title: 'MATLAB',
+    title: 'MATLAB 信号处理',
     competency: 4,
-    category: ['通信与信号处理', '数据分析'],
+    category: ['通信与信号处理'],
   },
   {
-  title: 'Multisim',
-  competency: 3,
-  category: ['电路与仿真', '通信与信号处理'],
-  },
-
-
-  // ===== 数据分析 =====
-  {
-    title: 'Pandas',
+    title: 'Multisim 电路仿真',
     competency: 3,
-    category: ['数据分析'],
+    category: ['通信与信号处理'],
   },
 
+  // ===== 工程开发与工具 =====
   {
-    title: 'Excel',
+    title: 'Flask / Web API',
     competency: 4,
-    category: ['数据分析'],
-  },
-
-  // ===== 其他工具 =====
-  {
-    title: 'PyCharm',
-    competency: 4,
-    category: ['其他工具', 'IDE'],
+    category: ['工程与工具'],
   },
   {
-    title: 'RStudio',
-    competency: 3,
-    category: ['其他工具', 'IDE'],
+    title: 'Git & GitHub',
+    competency: 4,
+    category: ['工程与工具'],
   },
   {
-    title: 'VS Code',
+    title: 'VS Code & PyCharm',
     competency: 4,
-    category: ['其他工具'],
+    category: ['工程与工具'],
   },
 ].map((skill) => ({ ...skill, category: skill.category.sort() }));
 
-/**
- * Category colors with pre-computed text contrast.
- * Uses CSS custom properties defined in tailwind.css for runtime styling,
- * with textColor pre-computed from the hex values for accessibility.
- */
 const CATEGORY_COLORS: { color: string; textColor: 'dark' | 'light' }[] = [
-  { color: 'var(--color-skill-1)', textColor: 'light' }, // #6968b3 - dark bg
-  { color: 'var(--color-skill-2)', textColor: 'dark' }, // #37b1f5 - light bg
-  { color: 'var(--color-skill-3)', textColor: 'light' }, // #40494e - dark bg
-  { color: 'var(--color-skill-4)', textColor: 'light' }, // #515dd4 - dark bg
-  { color: 'var(--color-skill-5)', textColor: 'dark' }, // #e47272 - light bg
-  { color: 'var(--color-skill-6)', textColor: 'dark' }, // #cc7b94 - light bg
+  { color: 'var(--color-skill-1)', textColor: 'light' },
+  { color: 'var(--color-skill-2)', textColor: 'dark' },
+  { color: 'var(--color-skill-3)', textColor: 'light' },
+  { color: 'var(--color-skill-4)', textColor: 'light' },
+  { color: 'var(--color-skill-5)', textColor: 'dark' },
+  { color: 'var(--color-skill-6)', textColor: 'dark' },
 ];
 
-// Fallback colors for categories beyond the predefined set
 const FALLBACK_COLORS: { color: string; textColor: 'dark' | 'light' }[] = [
   { color: '#3896e2', textColor: 'dark' },
   { color: '#c3423f', textColor: 'light' },
@@ -119,24 +115,12 @@ const FALLBACK_COLORS: { color: string; textColor: 'dark' | 'light' }[] = [
   { color: '#64cb7b', textColor: 'dark' },
 ];
 
-/**
- * Build categories from skills with type-safe color assignment.
- */
 function buildCategories(skillsList: Skill[]): Category[] {
   const uniqueCategories = Array.from(
     new Set(skillsList.flatMap(({ category }) => category)),
   ).sort();
 
   const allColors = [...CATEGORY_COLORS, ...FALLBACK_COLORS];
-
-  if (
-    process.env.NODE_ENV === 'development' &&
-    uniqueCategories.length > allColors.length
-  ) {
-    console.warn(
-      `[skills.ts] Warning: ${uniqueCategories.length} categories but only ${allColors.length} colors defined`,
-    );
-  }
 
   return uniqueCategories.map((category, index) => {
     const colorConfig = allColors[index] ?? {

@@ -15,29 +15,21 @@ describe('Hero', () => {
     render(<Hero />);
 
     const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toHaveTextContent("刘旭峰");
+    expect(heading).toHaveTextContent('刘旭峰');
   });
 
-  it('renders the tagline with OpenAI and promptfoo links', () => {
+  it('renders the tagline with academic performance and rank', () => {
     render(<Hero />);
 
-    const openAiLink = screen.getByRole('link', { name: /openai/i });
-    expect(openAiLink).toHaveAttribute('href', 'https://openai.com');
-    expect(openAiLink).toHaveClass('hero-highlight');
-
-    const promptfooLink = screen.getByRole('link', { name: /promptfoo/i });
-    expect(promptfooLink).toHaveAttribute('href', 'https://promptfoo.dev');
-    expect(promptfooLink).toHaveClass('hero-highlight');
+    expect(screen.getByText(/GPA: 4.04 \/ 5.0/i)).toBeInTheDocument();
+    expect(screen.getByText(/排名: 2\/34/i)).toBeInTheDocument();
   });
 
   it('displays hero chips for credentials', () => {
     render(<Hero />);
 
-    expect(screen.getByText('主修GIS与遥感')).toBeInTheDocument();
+    expect(screen.getByText('主修 GIS 与遥感')).toBeInTheDocument();
     expect(screen.getByText('辅修通信工程')).toBeInTheDocument();
-    expect(
-      screen.getByText('兰州大学本科生'),
-    ).toBeInTheDocument();
   });
 
   it('renders CTA buttons with correct links', () => {

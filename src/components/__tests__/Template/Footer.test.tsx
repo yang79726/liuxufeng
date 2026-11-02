@@ -14,9 +14,9 @@ describe('Footer', () => {
   it('displays the name and role', () => {
     render(<Footer />);
 
-    expect(screen.getByText("刘旭峰")).toBeInTheDocument();
+    expect(screen.getAllByText('刘旭峰').length).toBeGreaterThan(0);
     expect(
-      screen.getByText('Member of the Technical Staff at OpenAI'),
+      screen.getByText('地理信息科学 · 本科生 | 兰州大学'),
     ).toBeInTheDocument();
   });
 
@@ -53,7 +53,6 @@ describe('Footer', () => {
   it('renders contact icons section', () => {
     render(<Footer />);
 
-    // Contact icons are rendered via ContactIcons component
     const socialSection = document.querySelector('.footer-social');
     expect(socialSection).toBeInTheDocument();
     expect(screen.getByText('Connect')).toBeInTheDocument();

@@ -69,8 +69,8 @@ export async function GET() {
   <channel>
     <title>刘旭峰 - Writing</title>
     <link>${SITE_URL}/writing/</link>
-    <description>Articles on AI security, LLM red teaming, and trust &amp; safety by Michael D'Angelo.</description>
-    <language>en-us</language>
+    <description>刘旭峰的个人文章与学习笔记分享</description>
+    <language>zh-CN</language>
     <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
     <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml"/>${rssItems}
   </channel>

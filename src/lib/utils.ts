@@ -3,9 +3,9 @@
  */
 
 // Site configuration
-export const SITE_URL = 'https://mldangelo.com';
-export const AUTHOR_NAME = "刘旭峰 ";
-export const TWITTER_HANDLE = '@dangelosaurus';
+export const SITE_URL = 'https://yang79726.github.io';
+export const AUTHOR_NAME = '刘旭峰';
+export const TWITTER_HANDLE = '';
 
 // Image dimension constants
 export const AVATAR_SIZE = {
@@ -30,7 +30,7 @@ export function formatDate(dateStr: string): string {
   if (!dateStr) return '';
   // Parse as UTC to avoid timezone shifts
   const date = new Date(`${dateStr}T12:00:00`);
-  return date.toLocaleDateString('en-US', {
+  return date.toLocaleDateString('zh-CN', {
     year: 'numeric',
     month: 'long',
     day: 'numeric',

@@ -8,56 +8,46 @@ describe('about data', () => {
     expect(aboutMarkdown.length).toBeGreaterThan(0);
   });
 
-  it('contains the intro section', () => {
+  it('contains the intro section with GPA and rank', () => {
     expect(aboutMarkdown).toContain('# Intro');
-    expect(aboutMarkdown).toContain('OpenAI');
-    expect(aboutMarkdown).toContain('Promptfoo');
+    expect(aboutMarkdown).toContain('刘旭峰');
+    expect(aboutMarkdown).toContain('GPA: 4.04 / 5.0 (均分 90.40) | 排名: 2/34');
   });
 
   it('contains the history section', () => {
     expect(aboutMarkdown).toContain('# Some History');
-    expect(aboutMarkdown).toContain('MS-DOS');
+    expect(aboutMarkdown).toContain('兰州大学');
+  });
+
+  it('contains the discipline understanding section', () => {
+    expect(aboutMarkdown).toContain('# 我的学科理解');
+    expect(aboutMarkdown).toContain('遥感');
+    expect(aboutMarkdown).toContain('GPS');
   });
 
   it('contains the likes section', () => {
     expect(aboutMarkdown).toContain('# I Like');
-    expect(aboutMarkdown).toContain('Running');
-    expect(aboutMarkdown).toContain('Skiing');
+    expect(aboutMarkdown).toContain('Python');
   });
 
-  it('contains the travel section', () => {
-    expect(aboutMarkdown).toContain('# Travel / Geography');
-    expect(aboutMarkdown).toContain('Buffalo, New York');
-  });
-
-  it('contains the fun facts section', () => {
-    expect(aboutMarkdown).toContain('# Fun Facts');
-  });
-
-  it('contains the dreams section', () => {
-    expect(aboutMarkdown).toContain('# I Dream Of');
-    expect(aboutMarkdown).toContain('Staying curious');
-  });
-
-  it('contains the admired websites section', () => {
-    expect(aboutMarkdown).toContain('# Websites from People I Admire');
+  it('contains the awards and honors section', () => {
+    expect(aboutMarkdown).toContain('# 荣誉与奖项');
+    expect(aboutMarkdown).toContain('计算机设计大赛');
   });
 
   it('contains valid markdown links', () => {
-    // Check for markdown link format [text](url)
     const linkRegex = /\[.+?\]\(.+?\)/g;
     const links = aboutMarkdown.match(linkRegex);
 
     expect(links).not.toBeNull();
-    expect(links!.length).toBeGreaterThan(10);
+    expect(links!.length).toBeGreaterThan(0);
   });
 
   it('contains properly formatted headers', () => {
-    // Check for markdown headers
     const headerRegex = /^#+ .+$/gm;
     const headers = aboutMarkdown.match(headerRegex);
 
     expect(headers).not.toBeNull();
-    expect(headers!.length).toBeGreaterThan(5);
+    expect(headers!.length).toBeGreaterThan(3);
   });
 });

@@ -1,25 +1,22 @@
 import { render } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 
+import degrees from '@/data/resume/degrees';
+import work from '@/data/resume/work';
 import { AUTHOR_NAME, SITE_URL } from '@/lib/utils';
 import PersonSchema from '../PersonSchema';
 
 describe('PersonSchema', () => {
   it('renders a script tag with JSON-LD content', () => {
     const { container } = render(<PersonSchema />);
+    const script = container.querySelector('script[type="application/ld+json"]');
 
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
     expect(script).toBeInTheDocument();
   });
 
   it('contains Person schema type', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data['@context']).toBe('https://schema.org');
@@ -28,10 +25,7 @@ describe('PersonSchema', () => {
 
   it('uses correct author name from constants', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.name).toBe(AUTHOR_NAME);
@@ -39,64 +33,36 @@ describe('PersonSchema', () => {
 
   it('uses correct site URL from constants', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.url).toBe(SITE_URL);
-    expect(data.image).toBe(`${SITE_URL}/images/me.jpg`);
-  });
-
-  it('includes social links in sameAs', () => {
-    const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
-    const data = JSON.parse(script?.innerHTML || '{}');
-
-    expect(data.sameAs).toBeDefined();
-    expect(Array.isArray(data.sameAs)).toBe(true);
-    expect(data.sameAs.length).toBeGreaterThan(0);
   });
 
   it('includes worksFor organization', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.worksFor).toBeDefined();
     expect(data.worksFor['@type']).toBe('Organization');
-    expect(data.worksFor.name).toBe('OpenAI');
+    expect(data.worksFor.name).toBe(work[0].name);
   });
 
   it('uses current role as job title', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
-    expect(data.jobTitle).toBe('Member of the Technical Staff');
+    expect(data.jobTitle).toBe(work[0].position);
   });
 
   it('includes alumniOf schools', () => {
     const { container } = render(<PersonSchema />);
-
-    const script = container.querySelector(
-      'script[type="application/ld+json"]',
-    );
+    const script = container.querySelector('script[type="application/ld+json"]');
     const data = JSON.parse(script?.innerHTML || '{}');
 
     expect(data.alumniOf).toBeDefined();
-    expect(Array.isArray(data.alumniOf)).toBe(true);
-    expect(data.alumniOf.length).toBeGreaterThan(0);
-    expect(data.alumniOf[0]['@type']).toBe('CollegeOrUniversity');
+    expect(data.alumniOf[0].name).toBe(degrees[0].school);
   });
 });

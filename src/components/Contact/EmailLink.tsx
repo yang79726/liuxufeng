@@ -6,7 +6,6 @@ import { useEffect, useReducer, useRef, useState } from 'react';
 const ANIMATION_TICK_MS = 50; // Tick length in milliseconds
 const HOLD_TICKS_AFTER_MESSAGE = 50; // Ticks to wait after message completes
 
-// Validates the first half of an email address per RFC 5322
 function validateText(text: string): boolean {
   const re = /^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))$/;
   return re.test(text) || text.length === 0;
@@ -115,7 +114,6 @@ interface EmailLinkProps {
 }
 
 export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
-  // Check for reduced motion preference
   const [reducedMotion, setReducedMotion] = useState(false);
 
   useEffect(() => {
@@ -129,7 +127,6 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
     isActive: true,
   });
 
-  // If user prefers reduced motion, show static email immediately
   useEffect(() => {
     if (reducedMotion) {
       dispatch({ type: 'PAUSE' });
@@ -143,7 +140,6 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
     state.isActive && !reducedMotion ? ANIMATION_TICK_MS : null,
   );
 
-  // Use 'hi' as default message when reduced motion or paused with empty message
   const displayMessage =
     reducedMotion || state.message === '' ? 'hi' : state.message;
   const isValid = validateText(displayMessage);
@@ -170,7 +166,7 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
   const emailContent = (
     <>
       <span className="contact-email-prefix">{displayMessage}</span>
-      <span className="contact-email-domain">liuxf2023@lzu.edu.cn</span>
+      <span className="contact-email-domain">@liuxf2023@lzu.edu.cn</span>
     </>
   );
 
@@ -182,14 +178,15 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
     >
       {isValid ? (
         <a
-          href={`mailto:${displayMessage}liuxf2023@lzu.edu.cn`}
+          href="mailto:liuxf2023@lzu.edu.cn"
           className="contact-email-link"
           onClick={handleClick}
           onKeyDown={handleKeyDown}
           onFocus={handlePause}
           onBlur={handleResume}
         >
-          {emailContent}
+          <span className="contact-email-prefix">{displayMessage}</span>
+          <span className="contact-email-domain">liuxf2023@lzu.edu.cn</span>
         </a>
       ) : (
         <span
@@ -197,7 +194,8 @@ export default function EmailLink({ loopMessage = false }: EmailLinkProps) {
           aria-disabled="true"
           tabIndex={-1}
         >
-          {emailContent}
+          <span className="contact-email-prefix">{displayMessage}</span>
+          <span className="contact-email-domain">liuxf2023@lzu.edu.cn</span>
         </span>
       )}
     </div>

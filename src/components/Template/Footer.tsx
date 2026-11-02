@@ -4,7 +4,7 @@ import ContactIcons from '@/components/Contact/ContactIcons';
 import ThemePortrait from './ThemePortrait';
 
 export default function Footer() {
-  const currentRole = `地理信息科学 · 本科生 | 兰州大学`;
+  const currentRole = '地理信息科学 · 本科生 | 兰州大学';
 
   return (
     <footer className="site-footer-new">

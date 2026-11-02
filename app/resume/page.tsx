@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import Courses from '@/components/Resume/Courses';
 import Education from '@/components/Resume/Education';
 import Experience from '@/components/Resume/Experience';
+import PrivacyLock from '@/components/Resume/PrivacyLock';
 import References from '@/components/Resume/References';
 import ResumeNav from '@/components/Resume/ResumeNav';
 import Skills from '@/components/Resume/Skills';
@@ -16,7 +17,7 @@ import { createPageMetadata } from '@/lib/metadata';
 export const metadata: Metadata = createPageMetadata({
   title: 'Resume',
   description:
-    "刘旭峰 's Resume. OpenAI, Promptfoo, Smile ID, Arthena, Matroid, , YC alum.",
+    '刘旭峰的个人简历 | 兰州大学地理信息科学专业本科，辅修通信工程，GPA: 4.04 / 5.0 (均分 90.40) | 排名: 2/34。',
   path: '/resume/',
 });
 
@@ -27,7 +28,7 @@ export default function ResumePage() {
         <header className="resume-header">
           <h1 className="resume-title">Resume</h1>
           <p className="resume-summary">
-            兰州大学地理信息科学专业本科生，主修GIS与遥感，辅修通信工程。GPA 90.32。具备Python开发、遥感图像处理、GIS空间分析能力，善于用代码解决空间问题。
+            兰州大学地理信息科学专业本科生，主修 GIS 与遥感，辅修通信工程。GPA: 4.04 / 5.0 (均分 90.40) | 排名: 2/34。曾获 2026 中国大学生计算机设计大赛省级一等奖、全国大学生数学竞赛三等奖、兰州大学优秀学生一等奖学金。具备扎实的 Python 开发、遥感图像处理、空间数据分析与信号系统基础，善于用代码与算法解决空间数据问题。
           </p>
         </header>
 
@@ -52,6 +53,10 @@ export default function ResumePage() {
 
           <section id="references" className="resume-section">
             <References />
+          </section>
+
+          <section id="privacy" className="resume-section">
+            <PrivacyLock />
           </section>
         </div>
       </section>

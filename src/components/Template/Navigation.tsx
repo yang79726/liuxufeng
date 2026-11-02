@@ -18,7 +18,7 @@ export default function Navigation() {
 
   return (
     <header className="site-header">
-      <Link href="/" className="site-logo">
+      <Link href="/" className={`site-logo ${isActive('/') ? 'active' : ''}`}>
         <span className="logo-text">LX</span>
       </Link>
 
