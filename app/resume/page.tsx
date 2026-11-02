@@ -3,7 +3,6 @@ import type { Metadata } from 'next';
 import Courses from '@/components/Resume/Courses';
 import Education from '@/components/Resume/Education';
 import Experience from '@/components/Resume/Experience';
-import PrivacyLock from '@/components/Resume/PrivacyLock';
 import References from '@/components/Resume/References';
 import ResumeNav from '@/components/Resume/ResumeNav';
 import Skills from '@/components/Resume/Skills';
@@ -57,10 +56,6 @@ export default function ResumePage() {
 
           <section id="references" className="resume-section">
             <References />
-          </section>
-
-          <section id="privacy" className="resume-section">
-            <PrivacyLock />
           </section>
         </div>
       </section>

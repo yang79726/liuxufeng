@@ -50,14 +50,6 @@ const data: Project[] = [
     desc: '针对祁连山复杂地理环境修正全球树线机理模型的水分约束函数，结合 GEE 遥感数据、SRTM 30m DEM 与激光雷达冠层高度产品重构样本，基于 XGBoost 构建高精度树线分类器。',
     tech: ['Python', 'XGBoost', 'SHAP', 'GEE', 'LiDAR'],
   },
-  {
-    title: 'HTML生成PPT演示文稿工具',
-    subtitle: 'Markdown 快速生成轻量幻灯片',
-    image: '/images/projects/html2ppt.png',
-    date: '2025-01-01',
-    desc: '基于 HTML/CSS/JavaScript 的轻量级演示文稿制作工具，支持 Markdown 语法实时转幻灯片、在线编辑、主题切换与离线导出，提高技术汇报排版效率。',
-    tech: ['HTML5', 'CSS3', 'JavaScript', 'Markdown'],
-  },
 ];
 
 export default data;
