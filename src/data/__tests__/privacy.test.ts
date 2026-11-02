@@ -1,4 +1,4 @@
-import { readdirSync, readFileSync, statSync } from 'node:fs';
+import { existsSync, readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
@@ -83,5 +83,16 @@ describe('Cybersecurity & Personal Privacy Protection Audit', () => {
 
     const degreeSummary = degrees[0].degree;
     expect(degreeSummary).toContain(expectedGpaRank);
+  });
+
+  it('enforces anti-crawler and no unreferenced certificates in public', () => {
+    const certDir = join(__dirname, '../../../public/images/certificates');
+    expect(existsSync(certDir)).toBe(false);
+
+    const robotsTxt = readFileSync(
+      join(__dirname, '../../../public/robots.txt'),
+      'utf-8',
+    );
+    expect(robotsTxt).toContain('Disallow: /');
   });
 });

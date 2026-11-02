@@ -1,4 +1,2 @@
 User-agent: *
-Disallow: /api
-
-Sitemap: https://yang79726.github.io/sitemap.xml
+Disallow: /

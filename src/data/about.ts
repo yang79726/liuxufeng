@@ -60,5 +60,5 @@ GPS 卫星定位的核心依托于**通信原理中的码分多址（CDMA）与�
 - **兰州大学资源环境学院足球比赛**：第二名
 
 ---
-*欢迎通过 [GitHub](https://github.com/yang79726) 或 [邮箱](mailto:liuxf2023@lzu.edu.cn) 交流探讨。*
+*欢迎通过 [GitHub](https://github.com/yang79726) 或站内 [联系方式](/contact) 交流探讨。*
 `;
